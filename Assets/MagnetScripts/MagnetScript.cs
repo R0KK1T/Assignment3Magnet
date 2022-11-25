@@ -13,7 +13,8 @@ public class MagnetScript : MonoBehaviour
     private bool keyIsPressed = false;
 
     //Magnet
-    private string magneticTag = "Magnetic";
+    //private string magneticTag = "Magnetic";
+    public List<string> magneticTags;
     private int maxDistance = 50; // MAGIC NUMBER
     private bool magnetIsActive = false;
 
@@ -60,21 +61,24 @@ public class MagnetScript : MonoBehaviour
     List<GameObject> getObjectsToPull()
     {
         List<GameObject> retList = new List<GameObject>();
-        GameObject[] gos = GameObject.FindGameObjectsWithTag(magneticTag);
-
-        foreach (GameObject obj in gos)
+        foreach (string tag in magneticTags)
         {
-            Vector3 forward = transform.forward;//transform.TransformDirection(Vector3.forward);
-            Vector3 toOther = (obj.transform.position - transform.position).normalized;
+            GameObject[] gos = GameObject.FindGameObjectsWithTag(tag);
 
-            //Debug.DrawRay(transform.position, forward, Color.blue, 10);
-            //Debug.DrawRay(transform.position, toOther, Color.red, 10);
-
-
-            if (Vector3.Dot(forward, toOther) > 0.8)
+            foreach (GameObject obj in gos)
             {
-                print("The other transform is in the scope of the magnet!");
-                retList.Add(obj);
+                Vector3 forward = transform.forward;//transform.TransformDirection(Vector3.forward);
+                Vector3 toOther = (obj.transform.position - transform.position).normalized;
+
+                //Debug.DrawRay(transform.position, forward, Color.blue, 10);
+                //Debug.DrawRay(transform.position, toOther, Color.red, 10);
+
+
+                if (Vector3.Dot(forward, toOther) > 0.8)
+                {
+                    print("The other transform is in the scope of the magnet!");
+                    retList.Add(obj);
+                }
             }
         }
         return retList;

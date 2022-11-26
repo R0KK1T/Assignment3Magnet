@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6925cf501d8544494b0117c4d166a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationKey: space
-  magneticTags:
-  - Magnetic
+  activationKey: 0
+  magneticTags: []
 --- !u!65 &1549701421482895042
 BoxCollider:
   m_ObjectHideFlags: 0

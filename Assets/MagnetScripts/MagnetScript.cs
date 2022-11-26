@@ -9,7 +9,7 @@ public class MagnetScript : MonoBehaviour
     private int currentFrame = 0;
 
     //Keypress
-    public string activationKey;
+    public KeyCode activationKey;
     private bool keyIsPressed = false;
 
     //Magnet

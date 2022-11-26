@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class GeneratorScript : MonoBehaviour
 {
-    [SerializeField] private float spawnChance = 0.1f;
+    public bool MagnetActivate = false;
+
+    [SerializeField] private Vector2 spawnChance = new(0.01f, 0.1f);
     [SerializeField] private Vector2 radiusRange = new(3.0f, 4.0f);
 
     [SerializeField] private ObjectChance[] objectChances;
@@ -12,7 +14,8 @@ public class GeneratorScript : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Random.Range(0.0f, 1.0f) < spawnChance)
+        float chance = MagnetActivate ? spawnChance.y : spawnChance.x;
+        if (Random.Range(0.0f, 1.0f) < chance)
         {
             float sum = objectChances.Sum(x => x.Chance);
 

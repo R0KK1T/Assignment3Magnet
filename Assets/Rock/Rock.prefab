@@ -9676,7 +9676,7 @@ GameObject:
   - component: {fileID: 8729531278228812086}
   m_Layer: 0
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9755,6 +9755,7 @@ MonoBehaviour:
   velocityRange: {x: 10, y: 15}
   angleRange: {x: 15, y: 45}
   maxDistance: 20
+  maxTime: 5
 --- !u!95 &8729531278228812086
 Animator:
   serializedVersion: 4

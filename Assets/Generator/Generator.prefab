@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43534a55070bced47ae212933633a4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 0.01
+  MagnetActivate: 0
+  spawnChance: {x: 0.01, y: 0.1}
   radiusRange: {x: 12, y: 18}
   objectChances:
   - ObjectPrefab: {fileID: 5358121727047628890, guid: ec97239b1da241b4e816190e102e2cf5, type: 3}

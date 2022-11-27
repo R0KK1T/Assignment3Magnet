@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,24 +11,32 @@ public class MagnetScript : MonoBehaviour
 
     //Keypress
     public KeyCode activationKey;
-    private bool keyIsPressed = false;
+    public KeyCode reversePolarityKey;
 
     //Magnet
-    //private string magneticTag = "Magnetic";
     public List<string> magneticTags;
     private int maxDistance = 50; // MAGIC NUMBER
     private bool magnetIsActive = false;
+    private int polarity = 1;
+    private Color magnetColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        magnetColor = gameObject.GetComponentInChildren<MeshRenderer>().material.GetColor("_Color");
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForKeyPress();
+        if (Input.GetKeyDown(activationKey))
+        {
+            ToggleMagnet();
+        }
+        if (Input.GetKeyDown(reversePolarityKey))
+        {
+            ReversePolarity();
+        }
     }
     private void FixedUpdate()
     {
@@ -40,22 +49,29 @@ public class MagnetScript : MonoBehaviour
             }
             currentFrame++;
         }
+        else if (currentFrame > 0)
+        {
+            currentFrame = 0;
+        }
     }
 
-    void CheckForKeyPress()
+    void ToggleMagnet()
     {
-        if (Input.GetKeyDown(activationKey) && !keyIsPressed)
+        magnetIsActive = !magnetIsActive;
+        print("Magnet is active: " + magnetIsActive);
+    }
+    void ReversePolarity()
+    {
+        polarity *= -1;
+        if (polarity < 0)
         {
-            magnetIsActive = !magnetIsActive;
-            currentFrame = 0;
-            keyIsPressed = true;
-
-            print("Key pressed");
+            gameObject.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", Color.blue);
         }
-        else if (Input.GetKeyUp(activationKey) && keyIsPressed)
+        else
         {
-            keyIsPressed = false;
+            gameObject.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", magnetColor);
         }
+        print("Polarity is: " + polarity);
     }
 
     List<GameObject> getObjectsToPull()
@@ -67,16 +83,11 @@ public class MagnetScript : MonoBehaviour
 
             foreach (GameObject obj in gos)
             {
-                Vector3 forward = transform.forward;//transform.TransformDirection(Vector3.forward);
+                Vector3 forward = transform.forward;
                 Vector3 toOther = (obj.transform.position - transform.position).normalized;
-
-                //Debug.DrawRay(transform.position, forward, Color.blue, 10);
-                //Debug.DrawRay(transform.position, toOther, Color.red, 10);
-
 
                 if (Vector3.Dot(forward, toOther) > 0.8)
                 {
-                    print("The other transform is in the scope of the magnet!");
                     retList.Add(obj);
                 }
             }
@@ -89,10 +100,10 @@ public class MagnetScript : MonoBehaviour
         foreach (GameObject obj in gameObjects)
         {
             float forceMult = maxDistance - Vector3.Distance(obj.transform.position, transform.position);
-            //Debug.Log(forceMult);
+
             if (forceMult > 0)
             {
-                obj.GetComponent<Rigidbody>().AddForce((transform.position - obj.transform.position).normalized * forceMult, ForceMode.Force);
+                obj.GetComponent<Rigidbody>().AddForce((transform.position - obj.transform.position).normalized * forceMult * polarity, ForceMode.Force);
             }
         }
     }

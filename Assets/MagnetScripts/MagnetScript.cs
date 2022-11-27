@@ -18,11 +18,18 @@ public class MagnetScript : MonoBehaviour
     private int maxDistance = 50; // MAGIC NUMBER
     private bool magnetIsActive = false;
     private int polarity = 1;
+    private Color magnetColor;
+    private Color invertedMagnetColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        magnetColor = gameObject.GetComponentInChildren<MeshRenderer>().material.GetColor("_Color");
+        invertedMagnetColor = InvertedColor(magnetColor);
+    }
+    Color InvertedColor(Color c)
+    {
+        return new Color(1.0f - c.r, 1.0f - c.g, 1.0f - c.b);
     }
 
     // Update is called once per frame
@@ -62,6 +69,14 @@ public class MagnetScript : MonoBehaviour
     void ReversePolarity()
     {
         polarity *= -1;
+        if (polarity < 0)
+        {
+            gameObject.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", invertedMagnetColor);
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<MeshRenderer>().material.SetColor("_Color", magnetColor);
+        }
         print("Polarity is: " + polarity);
     }
 

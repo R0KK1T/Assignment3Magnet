@@ -11,11 +11,13 @@ public class MagnetScript : MonoBehaviour
 
     //Keypress
     public KeyCode activationKey;
+    public KeyCode reversePolarityKey;
 
     //Magnet
     public List<string> magneticTags;
     private int maxDistance = 50; // MAGIC NUMBER
     private bool magnetIsActive = false;
+    private int polarity = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,14 @@ public class MagnetScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForKeyPress(activationKey, ToggleMagnet);
+        if (Input.GetKeyDown(activationKey))
+        {
+            ToggleMagnet();
+        }
+        if (Input.GetKeyDown(reversePolarityKey))
+        {
+            ReversePolarity();
+        }
     }
     private void FixedUpdate()
     {
@@ -45,18 +54,15 @@ public class MagnetScript : MonoBehaviour
         }
     }
 
-    void CheckForKeyPress(KeyCode key, Action methodName)
-    {
-        if (Input.GetKeyDown(key))
-        {
-            methodName();
-
-            print("Key pressed");
-        }
-    }
     void ToggleMagnet()
     {
         magnetIsActive = !magnetIsActive;
+        print("Magnet is active: " + magnetIsActive);
+    }
+    void ReversePolarity()
+    {
+        polarity *= -1;
+        print("Polarity is: " + polarity);
     }
 
     List<GameObject> getObjectsToPull()
@@ -73,7 +79,6 @@ public class MagnetScript : MonoBehaviour
 
                 if (Vector3.Dot(forward, toOther) > 0.8)
                 {
-                    print("The other transform is in the scope of the magnet!");
                     retList.Add(obj);
                 }
             }
@@ -89,7 +94,7 @@ public class MagnetScript : MonoBehaviour
 
             if (forceMult > 0)
             {
-                obj.GetComponent<Rigidbody>().AddForce((transform.position - obj.transform.position).normalized * forceMult, ForceMode.Force);
+                obj.GetComponent<Rigidbody>().AddForce((transform.position - obj.transform.position).normalized * forceMult * polarity, ForceMode.Force);
             }
         }
     }

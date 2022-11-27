@@ -30,6 +30,22 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("PlayerCollision");
+        switch (other.gameObject.tag)
+        {
+            case "Coin":
+                //add score
+                Debug.Log("Wahoo!");
+                break;
+            case "Star":
+                //add score
+                break;
+
+        }
+    }
+
     void Update()
     {
         // We are grounded, so recalculate move direction based on axes

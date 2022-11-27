@@ -31,7 +31,17 @@ public class StarScript : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        //add cases for mine, player and ?rock?
+        switch (other.gameObject.tag)
+        {
+            case "Mine":
+                //effect
+                break;
+            case "Player":
+                //add score
+                Debug.Log("You got a star!");
+                Destroy(gameObject);
+                break;
+        }
     }
 
 

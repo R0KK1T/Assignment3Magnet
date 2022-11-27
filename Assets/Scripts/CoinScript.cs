@@ -16,6 +16,7 @@ public class CoinScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         startPos = transform.position;
     }
 
@@ -30,8 +31,19 @@ public class CoinScript : MonoBehaviour
         transform.position=newPos;
     }
 
-    private void OnCollisionEnter(Collision other) {
-        //add cases for mine, player and ?rock?
+    private void OnCollisionEnter(Collision other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Mine":
+                //effect
+                break;
+            case "Player":
+                //add score
+                Debug.Log("You got a coin   !");
+                Destroy(gameObject);
+                break;
+        }
     }
 
 

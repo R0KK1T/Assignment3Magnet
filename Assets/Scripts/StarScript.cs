@@ -12,6 +12,9 @@ public class StarScript : MonoBehaviour
 
     public int pointValue = 50;
 
+    public GameManager gm;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class StarScript : MonoBehaviour
             case "Player":
                 //add score
                 Debug.Log("You got a star!");
+                gm.ScoreChange(pointValue);
                 Destroy(gameObject);
                 break;
         }

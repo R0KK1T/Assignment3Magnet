@@ -102,6 +102,7 @@ MonoBehaviour:
   bobSpeed: 1
   bobDistance: 1
   pointValue: 50
+  gm: {fileID: 0}
 --- !u!54 &5517842849020213966
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,6 +130,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5801228030656462994, guid: c5641b257b4a7cb429a4ba945444fde0, type: 3}

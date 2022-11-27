@@ -12,6 +12,8 @@ public class CoinScript : MonoBehaviour
 
     public int pointValue = 10;
 
+    public GameManager gm;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,8 @@ public class CoinScript : MonoBehaviour
                 break;
             case "Player":
                 //add score
-                Debug.Log("You got a coin   !");
+                Debug.Log("You got a coin!");
+                gm.ScoreChange(pointValue);
                 Destroy(gameObject);
                 break;
         }

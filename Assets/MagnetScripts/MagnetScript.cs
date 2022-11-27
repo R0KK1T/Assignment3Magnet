@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,8 @@ public class MagnetScript : MonoBehaviour
 
     //Keypress
     public KeyCode activationKey;
-    private bool keyIsPressed = false;
 
     //Magnet
-    //private string magneticTag = "Magnetic";
     public List<string> magneticTags;
     private int maxDistance = 50; // MAGIC NUMBER
     private bool magnetIsActive = false;
@@ -27,7 +26,7 @@ public class MagnetScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForKeyPress();
+        CheckForKeyPress(activationKey, ToggleMagnet);
     }
     private void FixedUpdate()
     {
@@ -40,22 +39,24 @@ public class MagnetScript : MonoBehaviour
             }
             currentFrame++;
         }
+        else if (currentFrame > 0)
+        {
+            currentFrame = 0;
+        }
     }
 
-    void CheckForKeyPress()
+    void CheckForKeyPress(KeyCode key, Action methodName)
     {
-        if (Input.GetKeyDown(activationKey) && !keyIsPressed)
+        if (Input.GetKeyDown(key))
         {
-            magnetIsActive = !magnetIsActive;
-            currentFrame = 0;
-            keyIsPressed = true;
+            methodName();
 
             print("Key pressed");
         }
-        else if (Input.GetKeyUp(activationKey) && keyIsPressed)
-        {
-            keyIsPressed = false;
-        }
+    }
+    void ToggleMagnet()
+    {
+        magnetIsActive = !magnetIsActive;
     }
 
     List<GameObject> getObjectsToPull()
@@ -67,12 +68,8 @@ public class MagnetScript : MonoBehaviour
 
             foreach (GameObject obj in gos)
             {
-                Vector3 forward = transform.forward;//transform.TransformDirection(Vector3.forward);
+                Vector3 forward = transform.forward;
                 Vector3 toOther = (obj.transform.position - transform.position).normalized;
-
-                //Debug.DrawRay(transform.position, forward, Color.blue, 10);
-                //Debug.DrawRay(transform.position, toOther, Color.red, 10);
-
 
                 if (Vector3.Dot(forward, toOther) > 0.8)
                 {
@@ -89,7 +86,7 @@ public class MagnetScript : MonoBehaviour
         foreach (GameObject obj in gameObjects)
         {
             float forceMult = maxDistance - Vector3.Distance(obj.transform.position, transform.position);
-            //Debug.Log(forceMult);
+
             if (forceMult > 0)
             {
                 obj.GetComponent<Rigidbody>().AddForce((transform.position - obj.transform.position).normalized * forceMult, ForceMode.Force);

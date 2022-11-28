@@ -28,9 +28,11 @@ public class StarScript : MonoBehaviour
         //Rotate coin
         transform.Rotate(new Vector3(0,20,0)*Time.deltaTime*spinSpeed);
         //bob up and down, position determined by a sine wave
+        /*
         newPos=startPos;
         newPos.y += Mathf.Sin (Time.fixedTime*Mathf.PI*bobSpeed)*bobDistance;
         transform.position=newPos;
+        */
     }
 
     private void OnCollisionEnter(Collision other) {

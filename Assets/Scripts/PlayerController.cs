@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         {
             case "Coin":
                 //add score
-                Debug.Log("Wahoo!");
                 break;
             case "Star":
                 //add score

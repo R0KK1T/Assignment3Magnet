@@ -11,6 +11,7 @@ public class MineScript : MonoBehaviour, IObject
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag( "Coin")){Destroy(other);}
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

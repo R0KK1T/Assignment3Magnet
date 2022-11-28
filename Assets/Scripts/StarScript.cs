@@ -17,9 +17,9 @@ public class StarScript : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+   void Awake ()
     {
-        startPos = transform.position;
+        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -35,11 +35,12 @@ public class StarScript : MonoBehaviour
         */
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) {
         switch (other.gameObject.tag)
         {
             case "Mine":
-                //effect
+                Debug.Log("StarExplosion");
+                Destroy(gameObject);
                 break;
             case "Player":
                 //add score

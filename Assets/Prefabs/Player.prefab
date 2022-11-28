@@ -121,7 +121,7 @@ Transform:
   m_Children:
   - {fileID: 3592489458580228625}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3592489458705954810
 MonoBehaviour:
@@ -142,6 +142,7 @@ MonoBehaviour:
   playerCamera: {fileID: 3592489458580228627}
   lookSpeed: 2
   lookXLimit: 45
+  gm: {fileID: 0}
   canMove: 1
 --- !u!143 &3592489458705954812
 CharacterController:
@@ -187,8 +188,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.8
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1509288482
@@ -319,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
       propertyPath: magneticTags.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
       propertyPath: magneticTags.Array.data[0]
@@ -328,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
       propertyPath: magneticTags.Array.data[1]
       value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
+      propertyPath: magneticTags.Array.data[2]
+      value: Mine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

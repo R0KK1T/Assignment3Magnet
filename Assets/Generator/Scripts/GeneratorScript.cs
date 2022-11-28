@@ -12,6 +12,8 @@ public class GeneratorScript : MonoBehaviour
 
     [SerializeField] private Transform player;
 
+    public GameManager gm;
+
     public void FixedUpdate()
     {
         float chance = MagnetActivate ? spawnChance.y : spawnChance.x;

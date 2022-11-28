@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
+    public GameManager gm;
+
     [HideInInspector]
     public bool canMove = true;
 
@@ -30,19 +32,16 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("PlayerCollision");
         switch (other.gameObject.tag)
         {
-            case "Coin":
-                //add score
+            case "Mine":
+                gm.ScoreChange(-50);
                 break;
-            case "Star":
-                //add score
-                break;
+            }
 
-        }
     }
 
     void Update()
@@ -57,14 +56,15 @@ public class PlayerController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        //Jumping
+        /*if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
         }
         else
         {
             moveDirection.y = movementDirectionY;
-        }
+        } */
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied

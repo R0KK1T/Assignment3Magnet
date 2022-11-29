@@ -7,9 +7,9 @@ public class CoinScript : MonoBehaviour
     public float spinSpeed = 30;
     public float bobSpeed = 1;
     public float bobDistance = 1;
-    Vector3 startPos = new Vector3();
+   /* Vector3 startPos = new Vector3();
     Vector3 newPos = new Vector3();
-
+   */
     public int pointValue = 10;
 
     public GameManager gm;

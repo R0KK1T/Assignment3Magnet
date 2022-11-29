@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinScript : MonoBehaviour
+public class CoinScript : MonoBehaviour, IObject
 {
     public float spinSpeed = 30;
     public float bobSpeed = 1;
@@ -52,6 +52,5 @@ public class CoinScript : MonoBehaviour
         }
     }
 
-
-
+    public void Initiate(Transform player) { }
 }

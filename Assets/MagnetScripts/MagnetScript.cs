@@ -15,7 +15,7 @@ public class MagnetScript : MonoBehaviour
 
     //Magnet
     public List<string> magneticTags;
-    private int maxDistance = 50; // MAGIC NUMBER
+    public int maxDistance;
     private bool magnetIsActive = false;
     private int polarity = 1;
     private Color magnetColor;

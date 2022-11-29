@@ -304,7 +304,7 @@ MonoBehaviour:
   radiusRange: {x: 30, y: 40}
   objectChances:
   - ObjectPrefab: {fileID: 5358121727047628890, guid: ec97239b1da241b4e816190e102e2cf5, type: 3}
-    Chance: 1
+    Chance: 10
   - ObjectPrefab: {fileID: 229097082951958459, guid: 3ea9bd9086439c64095802f9a33aa69b, type: 3}
     Chance: 5
   - ObjectPrefab: {fileID: 1738126396130423947, guid: 1281f3758a0fff24ca7f6129f62e12df, type: 3}

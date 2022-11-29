@@ -9754,7 +9754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityRange: {x: 10, y: 15}
   angleRange: {x: 15, y: 45}
-  maxDistance: 20
+  maxDistance: 50
   maxTime: 5
 --- !u!95 &8729531278228812086
 Animator:

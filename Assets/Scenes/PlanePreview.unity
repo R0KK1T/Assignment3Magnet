@@ -304,7 +304,7 @@ MonoBehaviour:
   radiusRange: {x: 30, y: 40}
   objectChances:
   - ObjectPrefab: {fileID: 5358121727047628890, guid: ec97239b1da241b4e816190e102e2cf5, type: 3}
-    Chance: 1
+    Chance: 10
   - ObjectPrefab: {fileID: 229097082951958459, guid: 3ea9bd9086439c64095802f9a33aa69b, type: 3}
     Chance: 5
   - ObjectPrefab: {fileID: 1738126396130423947, guid: 1281f3758a0fff24ca7f6129f62e12df, type: 3}
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.50980395, g: 0.7686275, b: 0.35686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -715,11 +715,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 48
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1035,6 +1035,18 @@ PrefabInstance:
     - target: {fileID: 1509288484, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
       propertyPath: m_UseGravity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619603064638840408, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
+      propertyPath: maxDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619603064638840408, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
+      propertyPath: activationKey
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619603064638840408, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
+      propertyPath: reversePolarityKey
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3592489458705954809, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
       propertyPath: m_Name

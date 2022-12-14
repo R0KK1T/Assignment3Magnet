@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MagnetBallSize : MonoBehaviour
 {
-
-    public bool On;
+    /// <summary>
+    /// Size range between which ball will fluctuate.
+    /// </summary>
+    [HideInInspector] public Vector2 noiseRange;
 
     [SerializeField] private float noiseSize;
-    [SerializeField] private Vector2 noiseRange;
 
     // Update is called once per frame
     void Update()

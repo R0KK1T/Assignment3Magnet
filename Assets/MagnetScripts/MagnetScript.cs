@@ -20,6 +20,13 @@ public class MagnetScript : MonoBehaviour
     private int polarity = 1;
     private Color magnetColor;
 
+    [Header("Effects")]
+    public MagnetEffectScript effects;
+
+    [Header("Generator")]
+    public GeneratorScript generator;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +44,13 @@ public class MagnetScript : MonoBehaviour
         {
             ReversePolarity();
         }
+
+        // effects
+        effects.magnetOn = magnetIsActive;
+        effects.attract = (polarity == 1);
+
+        // generator
+        generator.MagnetActivate = magnetIsActive;
     }
     private void FixedUpdate()
     {

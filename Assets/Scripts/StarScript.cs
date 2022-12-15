@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarScript : MonoBehaviour, IObject
+public class StarScript : IObject
 {
     public float spinSpeed = 30;
     public float bobSpeed = 1;
@@ -10,17 +10,8 @@ public class StarScript : MonoBehaviour, IObject
    /* Vector3 startPos = new Vector3();
     Vector3 newPos = new Vector3();
    */
-    public int pointValue = 50;
 
-    public GameManager gm;
-
-
-
-    // Start is called before the first frame update
-   void Awake ()
-    {
-        gm = FindObjectOfType<GameManager>();
-    }
+    protected override ObjectType Type => ObjectType.STAR;
 
     // Update is called once per frame
     void Update()
@@ -35,21 +26,11 @@ public class StarScript : MonoBehaviour, IObject
         */
     }
 
-    private void OnTriggerEnter(Collider other) {
-        switch (other.gameObject.tag)
-        {
-            case "Mine":
-                Debug.Log("StarExplosion");
-                Destroy(gameObject);
-                break;
-            case "Player":
-                //add score
-                Debug.Log("You got a star!");
-                gm.ScoreChange(pointValue);
-                Destroy(gameObject);
-                break;
-        }
-    }
+    public override void Initiate(Transform player) { }
 
-    public void Initiate(Transform player) { }
+    public override void Hit(ObjectType type)
+    {
+        if (type != ObjectType.COIN || type != ObjectType.STAR)
+            Destroy(gameObject);
+    }
 }

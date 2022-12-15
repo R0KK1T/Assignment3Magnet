@@ -311,6 +311,8 @@ MonoBehaviour:
     Chance: 0.3
   - ObjectPrefab: {fileID: 1121754143008164616, guid: f3c4836df0e2f8d419cfe8eb9cd76059, type: 3}
     Chance: 2.5
+  - ObjectPrefab: {fileID: 1907409108000288995, guid: 66787999e6d66fb498485831865e1526, type: 3}
+    Chance: 0.5
   player: {fileID: 3592489457760442073}
   gm: {fileID: 363892322}
 --- !u!4 &522112654
@@ -1099,6 +1101,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2039416236119879238, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 363892322}
     - target: {fileID: 2619603064638840408, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
       propertyPath: generator
       value: 

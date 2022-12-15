@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MineScript : MonoBehaviour, IObject
+public class MineScript : IObject
 {
     [SerializeField] private GameObject explosion;
 
-    public void Initiate(Transform player) { }
+    protected override ObjectType Type => ObjectType.MINE;
 
-    private void OnTriggerEnter(Collider other)
+
+    private bool hit = false;
+
+    public override void Initiate(Transform player) { }
+
+    public override void Hit(ObjectType type)
     {
-        if (other.gameObject.CompareTag( "Coin")){Destroy(other);}
+        if (hit) return;
+
+        hit = true;
+
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

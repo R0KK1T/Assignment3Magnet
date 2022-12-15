@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 225158882991461726}
   - component: {fileID: 3628919296198569316}
   - component: {fileID: 5517842849020213966}
-  - component: {fileID: 3902717458213893206}
-  m_Layer: 0
+  - component: {fileID: 8924127919881905813}
+  m_Layer: 3
   m_Name: Star
   m_TagString: Star
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2664753868145566100
 MeshFilter:
@@ -101,8 +101,6 @@ MonoBehaviour:
   spinSpeed: 30
   bobSpeed: 1
   bobDistance: 1
-  pointValue: 50
-  gm: {fileID: 0}
 --- !u!54 &5517842849020213966
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,17 +117,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &3902717458213893206
-MeshCollider:
+--- !u!135 &8924127919881905813
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738126396130423947}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5801228030656462994, guid: c5641b257b4a7cb429a4ba945444fde0, type: 3}
+  serializedVersion: 2
+  m_Radius: 1.09
+  m_Center: {x: 0, y: 0, z: 0}

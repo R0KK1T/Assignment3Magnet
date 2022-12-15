@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
-public class RockScript : MonoBehaviour, IObject
+public class RockScript : IObject
 {
     [SerializeField] private Vector2 velocityRange;
     [SerializeField] private Vector2 angleRange;
@@ -17,8 +18,11 @@ public class RockScript : MonoBehaviour, IObject
 
     private Animator animator;
 
+    protected override ObjectType Type => ObjectType.ROCK;
+
     public void Awake()
     {
+
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
@@ -33,7 +37,7 @@ public class RockScript : MonoBehaviour, IObject
         }
     }
 
-    public void Initiate(Transform player)
+    public override void Initiate(Transform player)
     {
         Vector3 target = new Vector3(player.position.x, transform.position.y, player.position.z) - transform.position;
 
@@ -46,6 +50,12 @@ public class RockScript : MonoBehaviour, IObject
         rb.AddForce(direction * Random.Range(velocityRange.x, velocityRange.y), ForceMode.VelocityChange);
 
         center = player.position;
+    }
+
+    public override void Hit(ObjectType type)
+    {
+        if (type == ObjectType.PLAYER)
+            Despawn();
     }
 
     private void Despawn()

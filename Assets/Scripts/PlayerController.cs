@@ -32,18 +32,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("PlayerCollision");
-        switch (other.gameObject.tag)
-        {
-            case "Mine":
-                gm.ScoreChange(-50);
-                break;
-            }
-
-    }
-
     void Update()
     {
         // We are grounded, so recalculate move direction based on axes

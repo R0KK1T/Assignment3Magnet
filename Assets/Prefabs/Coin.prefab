@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1482169175286524637}
   - component: {fileID: 238739858132604297}
   - component: {fileID: 1601144799}
-  - component: {fileID: 1096350480959569531}
-  m_Layer: 0
+  - component: {fileID: -8688945206429759247}
+  m_Layer: 3
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3707955952237698583
 MeshFilter:
@@ -101,8 +101,6 @@ MonoBehaviour:
   spinSpeed: 30
   bobSpeed: 0.5
   bobDistance: 0.5
-  pointValue: 10
-  gm: {fileID: 0}
 --- !u!54 &1601144799
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,17 +117,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &1096350480959569531
-MeshCollider:
+--- !u!135 &-8688945206429759247
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121754143008164616}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5216581434543980006, guid: af6c8ee65938658479fd051380cf38c8, type: 3}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

@@ -1,26 +1,17 @@
 fileFormatVersion: 2
-guid: 8f1df90b465439540a1afb6502af9b77
+guid: d375a0c7b8e49ef46812c2d61b67944e
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable:
   - first:
-      74: -7643428952882733763
-    second: Drag|Close
+      74: -2465949866204749943
+    second: Tap|Death
   - first:
-      74: -982115091633673366
-    second: Drag|Death
+      74: 4162091406222299021
+    second: Tap|Idle
   - first:
-      74: -1652575548180767695
-    second: Drag|Idle_closed
-  - first:
-      74: 8010100726561483055
-    second: Drag|Idle_open
-  - first:
-      74: -2430399904381643104
-    second: Drag|Open
-  - first:
-      74: -682236144924341708
-    second: Drag|Spawn
+      74: -4843026922369897714
+    second: Tap|Spawn
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -51,37 +42,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Drag|Close
-      takeName: Armature|Close
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 7
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Drag|Death
-      takeName: Armature|Death
+      name: Tap|Death
+      takeName: Tap|Death
       internalID: 0
       firstFrame: 0
       lastFrame: 9
@@ -109,8 +71,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Drag|Idle_closed
-      takeName: Armature|Idle_closed
+      name: Tap|Idle
+      takeName: Tap|Idle
       internalID: 0
       firstFrame: 0
       lastFrame: 1
@@ -138,66 +100,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Drag|Idle_open
-      takeName: Armature|Idle_open
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 39
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Drag|Open
-      takeName: Armature|Open
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 7
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Drag|Spawn
-      takeName: Armature|Spawn
+      name: Tap|Spawn
+      takeName: Tap|Spawn
       internalID: 0
       firstFrame: 0
       lastFrame: 14
@@ -232,7 +136,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
     importCameras: 0
     importLights: 0

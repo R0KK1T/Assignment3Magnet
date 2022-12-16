@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
       propertyPath: magneticTags.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
       propertyPath: magneticTags.Array.data[0]
@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: magneticTags.Array.data[3]
       value: Shrapnel
       objectReference: {fileID: 0}
+    - target: {fileID: 1549701421482895047, guid: 306b18248415682479b9875defb58aeb, type: 3}
+      propertyPath: magneticTags.Array.data[4]
+      value: Drag
+      objectReference: {fileID: 0}
     - target: {fileID: 1819679558717404977, guid: 306b18248415682479b9875defb58aeb, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -307,6 +311,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1549701421482895046, guid: 306b18248415682479b9875defb58aeb, type: 3}
   m_PrefabInstance: {fileID: 3592489457795037343}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &784776943
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619603064638840409}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b953c5d1517f2944a7cc80632bbe242, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &784776942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +346,10 @@ MonoBehaviour:
   swipeDist: 0.05
   maxHeight: 0.41666666
   maxWidth: 1
+  cam: {fileID: 0}
+  touchMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &857004938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,26 +381,6 @@ MonoBehaviour:
   repelColor: {r: 0.41960785, g: 0.5921569, b: 1, a: 1}
   magnetShake: {fileID: 1169787723}
   shakeAmplitude: {x: 0, y: 0.05}
---- !u!95 &784776943
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2619603064638840409}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b953c5d1517f2944a7cc80632bbe242, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &2619603064638840411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1549701421482895044, guid: 306b18248415682479b9875defb58aeb, type: 3}

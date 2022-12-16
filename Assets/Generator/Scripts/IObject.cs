@@ -11,7 +11,7 @@ public abstract class IObject : MonoBehaviour
 
     public abstract void Hit(ObjectType type);
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         other.GetComponent<IObject>()?.Hit(Type);
     }

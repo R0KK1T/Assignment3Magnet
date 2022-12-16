@@ -69,12 +69,12 @@ public class MagnetScript : MonoBehaviour
         }
     }
 
-    void ToggleMagnet()
+    public void ToggleMagnet()
     {
         magnetIsActive = !magnetIsActive;
         print("Magnet is active: " + magnetIsActive);
     }
-    void ReversePolarity()
+    public void ReversePolarity()
     {
         polarity *= -1;
         if (polarity < 0)

@@ -199,7 +199,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 363892322}
+    - target: {fileID: 2619603064638840408, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
+      propertyPath: generator
+      value: 
+      objectReference: {fileID: 522112653}
     - target: {fileID: 3592489458705954809, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
       propertyPath: m_Name
       value: Player

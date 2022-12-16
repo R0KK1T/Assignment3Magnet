@@ -4,5 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PlanePreview.unity
+    guid: 682d07b1ccfa29a43aa8b46cb667de33
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: cbeb325db0349aa438e5c2368561bad7, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: d2ad68c5c5567894ab20ca8f24094d6a, type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 5ee46f467894c894daef3046dbcd4c39, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 516b81f272421d241812c624309e6b16, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 3f0f58cff2a584b43820e5c11ccdd608, type: 2}

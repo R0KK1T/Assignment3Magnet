@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canMove = true;
 
+    AudioSource audioSource;
+
+    public AudioClip coinSound;
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -30,6 +35,7 @@ public class PlayerController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        audioSource= GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,7 +46,11 @@ public class PlayerController : MonoBehaviour
             case "Mine":
                 gm.ScoreChange(-50);
                 break;
+            case "Coin":
+                audioSource.PlayOneShot(coinSound);
+                break;
             }
+
 
     }
 

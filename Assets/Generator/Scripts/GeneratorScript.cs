@@ -55,7 +55,6 @@ public class GeneratorScript : MonoBehaviour
         float radius = Random.Range(radiusRange.x, radiusRange.y);
         Vector3 pos = transform.position + (Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward) * radius;
         Quaternion rot = Random.rotation;
-        GameObject instantiated = Instantiate(obj, pos, rot);
         ARPlane plane = null;
         ARAnchor anchorPoint;
         foreach (ARPlane p in planeManager.trackables)
@@ -67,15 +66,22 @@ public class GeneratorScript : MonoBehaviour
         if (plane != null)
         {
             anchorPoint = anchorManager.AttachAnchor(plane, new Pose(pos, rot));
+            Debug.Log("Added anchor to a plane");
         }
         else
         {
             anchorPoint = anchorManager.gameObject.AddComponent<ARAnchor>();
+            Debug.Log("Added another anchor");
         }
 
-        instantiated.GetComponent<IObject>().Initiate(transform);
+        if (anchorPoint != null)
+        {
+            GameObject instantiated = Instantiate(obj, pos, rot);
 
-        instantiated.transform.parent = anchorPoint.transform;
+            instantiated.GetComponent<IObject>().Initiate(transform);
+
+            instantiated.transform.parent = anchorPoint.transform;
+        }
     }
 }
 

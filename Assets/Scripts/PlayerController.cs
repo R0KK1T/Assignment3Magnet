@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
+
 
 [RequireComponent(typeof(CharacterController))]
 
 public class PlayerController : MonoBehaviour
 {
+
+    public CanvasGroup canvasGroup;
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -13,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
-    public int health = 3;
+    public int health = 1;
     bool invulnerable = false;
 
     CharacterController characterController;
@@ -28,7 +34,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -43,7 +48,7 @@ public class PlayerController : MonoBehaviour
                 if (!invulnerable) health--;
                 if (health < 1)
                 {
-                    Debug.Log("Game over");               
+                    GameOver();               
                 }
                 break;
             case "powerUp":
@@ -63,19 +68,6 @@ public class PlayerController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        //Jumping
-        /*if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
-        {
-            moveDirection.y = jumpSpeed;
-        }
-        else
-        {
-            moveDirection.y = movementDirectionY;
-        } */
-
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
@@ -92,5 +84,23 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+
+        
     }
+
+    void GameOver()
+    {
+        canMove = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+        GetComponent<CapsuleCollider>().enabled=false;
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene("PlanePreview");
+    }
+
 }

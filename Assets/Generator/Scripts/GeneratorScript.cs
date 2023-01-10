@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 public class GeneratorScript : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class GeneratorScript : MonoBehaviour
     [SerializeField] private Transform player;
 
     public GameManager gm;
+    private ARAnchorManager anchorManager;
+    private ARPlaneManager planeManager;
+
+    void Start()
+    {
+        anchorManager = GameObject.Find("AR Session Origin").GetComponent<ARAnchorManager>();
+        planeManager = GameObject.Find("AR Session Origin").GetComponent<ARPlaneManager>();
+    }
 
     public void FixedUpdate()
     {
@@ -45,10 +54,28 @@ public class GeneratorScript : MonoBehaviour
 
         float radius = Random.Range(radiusRange.x, radiusRange.y);
         Vector3 pos = transform.position + (Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward) * radius;
+        Quaternion rot = Random.rotation;
+        GameObject instantiated = Instantiate(obj, pos, rot);
+        ARPlane plane = null;
+        ARAnchor anchorPoint;
+        foreach (ARPlane p in planeManager.trackables)
+        {
+            plane = p;
+            break;
+        }
 
-        GameObject instantiated = Instantiate(obj, pos, Random.rotation);
+        if (plane != null)
+        {
+            anchorPoint = anchorManager.AttachAnchor(plane, new Pose(pos, rot));
+        }
+        else
+        {
+            anchorPoint = anchorManager.gameObject.AddComponent<ARAnchor>();
+        }
 
         instantiated.GetComponent<IObject>().Initiate(transform);
+
+        instantiated.transform.parent = anchorPoint.transform;
     }
 }
 

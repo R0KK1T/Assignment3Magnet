@@ -301,7 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagnetActivate: 0
   spawnChance: {x: 0.01, y: 0.1}
-  radiusRange: {x: 30, y: 40}
+  radiusRange: {x: 5, y: 8}
+  verticalOffset: -0.3
   objectChances:
   - ObjectPrefab: {fileID: 5358121727047628890, guid: ec97239b1da241b4e816190e102e2cf5, type: 3}
     Chance: 1
@@ -643,6 +644,10 @@ PrefabInstance:
       propertyPath: generator
       value: 
       objectReference: {fileID: 522112653}
+    - target: {fileID: 2619603064638840408, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
+      propertyPath: maxDistance
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3592489458705954809, guid: 8611096f0c28df8428c4c1b5285bc66f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1282,7 +1287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 1848223641518504232, guid: 9dabc95a849c9e741accb270be7c75e3, type: 3}
-  m_DetectionMode: 1
+  m_DetectionMode: -1
 --- !u!1 &1840587710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,6 +1358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906190764}
   - component: {fileID: 1906190763}
+  - component: {fileID: 1906190765}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1437,3 +1443,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1906190765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906190762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1225b17190baac458dadc68104b2633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraManager: {fileID: 1458107303}

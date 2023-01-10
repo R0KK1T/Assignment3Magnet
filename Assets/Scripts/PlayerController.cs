@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    public int health = 3;
+    bool invulnerable = false;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -38,10 +40,15 @@ public class PlayerController : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Mine":
-                gm.ScoreChange(-50);
+                if (!invulnerable) health--;
+                if (health < 1)
+                {
+                    Debug.Log("Game over");               
+                }
                 break;
-            }
-
+            case "powerUp":
+                break;
+            }            
     }
 
     void Update()

@@ -8,7 +8,6 @@ public class GeneratorScript : MonoBehaviour
 
     [SerializeField] private Vector2 spawnChance = new(0.01f, 0.1f);
     [SerializeField] private Vector2 radiusRange = new(3.0f, 4.0f);
-    [SerializeField] private float verticalOffset;
 
     [SerializeField] private ObjectChance[] objectChances;
 
@@ -17,6 +16,8 @@ public class GeneratorScript : MonoBehaviour
     public GameManager gm;
     private ARAnchorManager anchorManager;
     private ARPlaneManager planeManager;
+    private bool hasGenerated = false;
+    private int minimumPlanesToStartGenerating = 5;
 
     void Start()
     {
@@ -54,40 +55,45 @@ public class GeneratorScript : MonoBehaviour
         float angle = Random.Range(0.0f, 360.0f);
 
         float radius = Random.Range(radiusRange.x, radiusRange.y);
-        Vector3 pos = transform.position + (Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward) * radius + verticalOffset * Vector3.up;
+        Vector3 pos = transform.position + (Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward) * radius;
         Quaternion rot = Random.rotation;
         ARPlane plane = null;
-        float minDist = -1.0f;
-        ARAnchor anchorPoint = null;
+        ARAnchor anchorPoint;
+
+        //Untested code START
+        if (planeManager.trackables.count < minimumPlanesToStartGenerating && !hasGenerated)
+        {
+            return;
+        }
+        //Untested code END
+
         foreach (ARPlane p in planeManager.trackables)
         {
-            float dist = (pos - p.transform.position).sqrMagnitude;
-
-            if (minDist < 0.0f || dist < minDist)
-            {
-                plane = p;
-                minDist = dist;
-            }
-            
+            plane = p;
+            break;
         }
 
         if (plane != null)
         {
-            anchorPoint = anchorManager.AttachAnchor(plane, new Pose(plane.transform.position, plane.transform.rotation));
+            anchorPoint = anchorManager.AttachAnchor(plane, new Pose(pos, rot));
             Debug.Log("Added anchor to a plane");
         }
-        //else
-        //{
-        //    anchorPoint = anchorManager.gameObject.AddComponent<ARAnchor>();
-        //    Debug.Log("Added another anchor");
-        //}
+        else
+        {
+            anchorPoint = anchorManager.gameObject.AddComponent<ARAnchor>();
+            Debug.Log("Added another anchor");
+        }
 
         if (anchorPoint != null)
         {
-            GameObject instantiated = Instantiate(obj, pos, rot, anchorPoint.transform);
-            //instantiated.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            GameObject instantiated = Instantiate(obj, pos, rot);
 
             instantiated.GetComponent<IObject>().Initiate(transform);
+
+            instantiated.transform.parent = anchorPoint.transform;
+            //Untested code START
+            hasGenerated = true;
+            //Untested code END
         }
     }
 }

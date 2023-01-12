@@ -300,7 +300,7 @@ MonoBehaviour:
   shadow: {fileID: 2008098372}
   text: {fileID: 1918797252}
   levelScript: {fileID: 977774445}
-  levelDist: 0.7
+  levelDist: 0.5
   textScale: 35
   shadowScale: 0.15
   shadowDefaultOffset: {x: 0.04, y: -0.04, z: 0}

@@ -31,12 +31,18 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canMove = true;
 
+    AudioSource audioSource;
+
+    public AudioClip coinSound;
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        audioSource= GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,9 +57,10 @@ public class PlayerController : MonoBehaviour
                     GameOver();               
                 }
                 break;
-            case "powerUp":
+            case "Coin":
+                audioSource.PlayOneShot(coinSound);
                 break;
-            }            
+            }
     }
 
     void Update()

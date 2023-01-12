@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class MineScript : MonoBehaviour, IObject
 {
     [SerializeField] private GameObject explosion;
+    public AudioClip explosionSFX;
 
     public void Initiate(Transform player) { }
 
@@ -13,6 +14,7 @@ public class MineScript : MonoBehaviour, IObject
     {
         if (other.gameObject.CompareTag( "Coin")){Destroy(other);}
         Instantiate(explosion, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(explosionSFX, transform.position, 0.5f);
         Destroy(gameObject);
     }
 

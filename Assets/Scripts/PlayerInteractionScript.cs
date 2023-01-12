@@ -88,6 +88,7 @@ public class PlayerInteractionScript : IObject
 
     public void GotoMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MenuScreen");
     }
     

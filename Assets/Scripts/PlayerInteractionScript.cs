@@ -96,20 +96,21 @@ public class PlayerInteractionScript : IObject
         if (invincible != true)
         {
             invincible = true;
-            starPanel.alpha = 0.6f;
-            magnet.maxDistance = 70;
-            //Ends star power after a
-            starRoutine = StarPowerEnd(7);
-            magnetRoutine = MagnetPowerEnd(6);
+            starPanel.alpha = 1;
+            //magnet.maxDistance = 70;
+            //Ends star power after 
+            starRoutine = StarPowerEnd(2);
+            //magnetRoutine = MagnetPowerEnd(1);
             StartCoroutine(starRoutine);
-            StartCoroutine(magnetRoutine);
+            //StartCoroutine(MagnetPowerEnd(1));
         }
     }
 
     private IEnumerator StarPowerEnd(float time)
     {
-        yield return new WaitForSeconds(time);
         starPanel.alpha = 0;
+        yield return new WaitForSeconds(time);
+        starPanel.alpha= 0;
         invincible = false;
     }
 

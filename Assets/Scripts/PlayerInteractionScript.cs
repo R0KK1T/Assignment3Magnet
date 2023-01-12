@@ -89,12 +89,15 @@ public class PlayerInteractionScript : IObject
 
     private void StarPower() 
     {
-        invincible = true;
-        starPanel.alpha = 0.6f;
-        magnet.maxDistance = 70;
-        //Ends star power after a delay
-        MagnetPowerEnd(8);
-        StarPowerEnd(10);
+        if (invincible != true)
+        {
+            invincible = true;
+            starPanel.alpha = 0.6f;
+            magnet.maxDistance = 70;
+            //Ends star power after a delay
+            MagnetPowerEnd(8);
+            StarPowerEnd(10);
+        }
     }
 
     private IEnumerator StarPowerEnd(float time)

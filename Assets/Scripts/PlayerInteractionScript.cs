@@ -27,6 +27,10 @@ public class PlayerInteractionScript : IObject
 
     private bool invincible = false;
 
+    IEnumerator starRoutine;
+
+    IEnumerator magnetRoutine;
+
     private void Start()
     {
         objectValues = new Dictionary<ObjectType, int>();
@@ -47,12 +51,12 @@ public class PlayerInteractionScript : IObject
             GameOver();
             return;
         }
-        /*
+        
         if (type == ObjectType.STAR)
         {
             StarPower();
             return;
-        }*/
+        }
 
         if (!objectValues.ContainsKey(type))
             return;
@@ -86,7 +90,7 @@ public class PlayerInteractionScript : IObject
     {
         SceneManager.LoadScene("MenuScreen");
     }
-    /*
+    
     private void StarPower() 
     {
         if (invincible != true)
@@ -94,9 +98,11 @@ public class PlayerInteractionScript : IObject
             invincible = true;
             starPanel.alpha = 0.6f;
             magnet.maxDistance = 70;
-            //Ends star power after a delay
-            MagnetPowerEnd(4);
-            StarPowerEnd(5);
+            //Ends star power after a
+            starRoutine = StarPowerEnd(7);
+            magnetRoutine = MagnetPowerEnd(6);
+            StartCoroutine(starRoutine);
+            StartCoroutine(magnetRoutine);
         }
     }
 
@@ -113,12 +119,7 @@ public class PlayerInteractionScript : IObject
         magnet.maxDistance = 30;
     }
 
-    private void powerUp()
-    {
-        float time = 0;
-
-    }*/
-
+   
 
 
 }

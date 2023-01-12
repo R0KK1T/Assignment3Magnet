@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShrapnelScirpt : IObject
 {
     [SerializeField] private float explosionRadius;
+    public AudioClip explosionSFX;
 
     private Animator animator;
     private bool hit = false;
@@ -25,6 +26,7 @@ public class ShrapnelScirpt : IObject
         hit = true;
 
         animator.SetTrigger("Explode");
+        AudioSource.PlayClipAtPoint(explosionSFX, transform.position, 0.5f);
         Collider[] colls = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider coll in colls)
         {

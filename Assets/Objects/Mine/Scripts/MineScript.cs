@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class MineScript : IObject
 {
     [SerializeField] private GameObject explosion;
-
+    public AudioClip explosionSFX;
     protected override ObjectType Type => ObjectType.MINE;
 
 
@@ -22,6 +22,7 @@ public class MineScript : IObject
 
         hit = true;
 
+        AudioSource.PlayClipAtPoint(explosionSFX, transform.position, 0.5f);
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

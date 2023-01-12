@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MagnetUIControl : MonoBehaviour
 {
     public Camera cam;
+    public Transform shadow;
+    public TextMeshProUGUI text;
     [Space]
     public float textScale;
+    public float shadowScale;
     public float smoothTime = 0.3f;
     public float dist = 50;
     private Vector3 velocity = Vector3.zero;
@@ -75,6 +79,11 @@ public class MagnetUIControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        
+        float t_dist = (target - defaultTarget).magnitude;
+        t_dist /= (Screen.width * 0.5f);
+
+        shadow.localPosition = shadowScale * t_dist * (defaultTarget - target).normalized;
+
+        text.characterSpacing = textScale * t_dist;
     }
 }

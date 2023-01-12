@@ -297,7 +297,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1165001559}
-  textScale: 0
+  shadow: {fileID: 2008098372}
+  text: {fileID: 1918797252}
+  textScale: 35
+  shadowScale: 0.15
   smoothTime: 0.15
   dist: 50
 --- !u!1 &1094762813

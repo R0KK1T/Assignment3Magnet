@@ -97,9 +97,8 @@ public class PlayerInteractionScript : IObject
         {
             invincible = true;
             starPanel.alpha = 1;
-            //magnet.maxDistance = 70;
             //Ends star power after 
-            starRoutine = StarPowerEnd(2);
+            starRoutine = StarPowerEnd(10);
             //magnetRoutine = MagnetPowerEnd(1);
             StartCoroutine(starRoutine);
             //StartCoroutine(MagnetPowerEnd(1));
@@ -108,7 +107,7 @@ public class PlayerInteractionScript : IObject
 
     private IEnumerator StarPowerEnd(float time)
     {
-        starPanel.alpha = 0;
+
         yield return new WaitForSeconds(time);
         starPanel.alpha= 0;
         invincible = false;

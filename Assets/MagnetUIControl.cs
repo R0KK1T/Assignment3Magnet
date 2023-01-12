@@ -10,9 +10,13 @@ public class MagnetUIControl : MonoBehaviour
     public Camera cam;
     public Transform shadow;
     public TextMeshProUGUI text;
+    public MenuScript levelScript;
+    [Space]
+    public float levelDist;
     [Space]
     public float textScale;
     public float shadowScale;
+    public Vector3 shadowDefaultOffset;
     public float smoothTime = 0.3f;
     public float dist = 50;
     private Vector3 velocity = Vector3.zero;
@@ -22,7 +26,7 @@ public class MagnetUIControl : MonoBehaviour
 
     private Vector2 offset;
 
-    private Boolean holding = false;
+    private bool holding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +71,13 @@ public class MagnetUIControl : MonoBehaviour
             {
                 if (holding)
                 {
+                    float t_dist = (target - defaultTarget).magnitude;
+                    t_dist /= (Screen.width * 0.5f);
+                    if (t_dist > levelDist)
+                    {
+                        levelScript.StartGame();
+                    }
+
                     holding = false;
 
                     target = defaultTarget;
@@ -79,10 +90,13 @@ public class MagnetUIControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        float t_dist = (target - defaultTarget).magnitude;
+        Vector2 currentPos = cam.WorldToScreenPoint(transform.position);
+
+        float t_dist = (currentPos - defaultTarget).magnitude;
         t_dist /= (Screen.width * 0.5f);
 
-        shadow.localPosition = shadowScale * t_dist * (defaultTarget - target).normalized;
+        shadow.localPosition = shadowScale * t_dist * (defaultTarget - currentPos).normalized;
+        shadow.localPosition += Vector3.forward * 0.03f + shadowDefaultOffset;
 
         text.characterSpacing = textScale * t_dist;
     }

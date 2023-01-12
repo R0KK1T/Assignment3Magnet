@@ -14,12 +14,18 @@ public class PlayerInteractionScript : IObject
     protected override ObjectType Type => ObjectType.PLAYER;
 
     [Space]
+    public MagnetScript magnet;
+    
+    public CanvasGroup starPanel;
+
     public CanvasGroup canvasGroup;
 
     AudioSource audioSource;
 
     public AudioClip coinSound;
     public MagnetScreenInputScript magnetInput;
+
+    private bool invincible = false;
 
     private void Start()
     {
@@ -36,9 +42,15 @@ public class PlayerInteractionScript : IObject
     {
         Debug.Log(type);
 
-        if (type == ObjectType.MINE || type == ObjectType.SHRAPNEL)
+        if ((type == ObjectType.MINE && invincible != true)|| (type == ObjectType.SHRAPNEL && invincible != true))
         {
             GameOver();
+            return;
+        }
+
+        if (type == ObjectType.STAR)
+        {
+            StarPower();
             return;
         }
 
@@ -74,6 +86,31 @@ public class PlayerInteractionScript : IObject
     {
         SceneManager.LoadScene("MenuScreen");
     }
+
+    private void StarPower() 
+    {
+        invincible = true;
+        starPanel.alpha = 0.6f;
+        magnet.maxDistance = 70;
+        //Ends star power after a delay
+        MagnetPowerEnd(8);
+        StarPowerEnd(10);
+    }
+
+    private IEnumerator StarPowerEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        starPanel.alpha = 0;
+        invincible = false;
+    }
+
+    private IEnumerator MagnetPowerEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        magnet.maxDistance = 30;
+    }
+
+
 
 }
 

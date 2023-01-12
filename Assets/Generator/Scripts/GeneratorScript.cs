@@ -20,7 +20,7 @@ public class GeneratorScript : MonoBehaviour
     private GameObject calibrationObject;
 
     private bool hasGenereated = false;
-    private int minimumPlanes = 5;
+    private int minimumPlanes = 3;
 
     void Start()
     {

@@ -17,11 +17,17 @@ public class GeneratorScript : MonoBehaviour
     public GameManager gm;
     private ARAnchorManager anchorManager;
     private ARPlaneManager planeManager;
+    private GameObject calibrationObject;
+
+    private bool hasGenereated = false;
+    private int minimumPlanes = 5;
 
     void Start()
     {
         anchorManager = GameObject.Find("AR Session Origin").GetComponent<ARAnchorManager>();
         planeManager = GameObject.Find("AR Session Origin").GetComponent<ARPlaneManager>();
+        calibrationObject = GameObject.Find("CalibrationPanel");
+        calibrationObject.SetActive(true);
     }
 
     public void FixedUpdate()
@@ -59,6 +65,12 @@ public class GeneratorScript : MonoBehaviour
         ARPlane plane = null;
         float minDist = -1.0f;
         ARAnchor anchorPoint = null;
+
+        if (planeManager.trackables.count < minimumPlanes && !hasGenereated)
+        {
+            return;
+        }
+
         foreach (ARPlane p in planeManager.trackables)
         {
             float dist = (pos - p.transform.position).sqrMagnitude;
@@ -76,11 +88,6 @@ public class GeneratorScript : MonoBehaviour
             anchorPoint = anchorManager.AttachAnchor(plane, new Pose(plane.transform.position, plane.transform.rotation));
             Debug.Log("Added anchor to a plane");
         }
-        //else
-        //{
-        //    anchorPoint = anchorManager.gameObject.AddComponent<ARAnchor>();
-        //    Debug.Log("Added another anchor");
-        //}
 
         if (anchorPoint != null)
         {
@@ -88,6 +95,9 @@ public class GeneratorScript : MonoBehaviour
             //instantiated.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
             instantiated.GetComponent<IObject>().Initiate(transform);
+
+            hasGenereated = true;
+            calibrationObject.SetActive(false);
         }
     }
 }

@@ -47,12 +47,12 @@ public class PlayerInteractionScript : IObject
             GameOver();
             return;
         }
-
+        /*
         if (type == ObjectType.STAR)
         {
             StarPower();
             return;
-        }
+        }*/
 
         if (!objectValues.ContainsKey(type))
             return;
@@ -86,7 +86,7 @@ public class PlayerInteractionScript : IObject
     {
         SceneManager.LoadScene("MenuScreen");
     }
-
+    /*
     private void StarPower() 
     {
         if (invincible != true)
@@ -95,8 +95,8 @@ public class PlayerInteractionScript : IObject
             starPanel.alpha = 0.6f;
             magnet.maxDistance = 70;
             //Ends star power after a delay
-            MagnetPowerEnd(8);
-            StarPowerEnd(10);
+            MagnetPowerEnd(4);
+            StarPowerEnd(5);
         }
     }
 
@@ -112,6 +112,12 @@ public class PlayerInteractionScript : IObject
         yield return new WaitForSeconds(time);
         magnet.maxDistance = 30;
     }
+
+    private void powerUp()
+    {
+        float time = 0;
+
+    }*/
 
 
 

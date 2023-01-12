@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         audioSource= GetComponent<AudioSource>();
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("PlayerCollision");

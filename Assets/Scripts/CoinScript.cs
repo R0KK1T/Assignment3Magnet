@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinScript : MonoBehaviour, IObject
+public class CoinScript : IObject
 {
     public float spinSpeed = 30;
     public float bobSpeed = 1;
@@ -10,16 +10,8 @@ public class CoinScript : MonoBehaviour, IObject
    /* Vector3 startPos = new Vector3();
     Vector3 newPos = new Vector3();
    */
-    public int pointValue = 10;
 
-    public GameManager gm;
-
-
-    // Start is called before the first frame update
-    void Awake ()
-    {
-        gm = FindObjectOfType<GameManager>();
-    }
+    protected override ObjectType Type => ObjectType.COIN;
 
     // Update is called once per frame
     void Update()
@@ -35,22 +27,11 @@ public class CoinScript : MonoBehaviour, IObject
         */
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        switch (other.gameObject.tag)
-        {
-            case "Player":
-                //add score
-                Debug.Log("You got a coin!");
-                gm.ScoreChange(pointValue);
-                Destroy(gameObject);
-                break;
-            case "Mine":
-                Debug.Log("CoinExplosion");
-                Destroy(gameObject);
-                break;
-        }
-    }
+    public override void Initiate(Transform player) { }
 
-    public void Initiate(Transform player) { }
+    public override void Hit(ObjectType type)
+    {
+        if (type != ObjectType.COIN || type != ObjectType.STAR)
+            Destroy(gameObject);
+    }
 }

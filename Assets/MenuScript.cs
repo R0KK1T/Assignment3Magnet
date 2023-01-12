@@ -18,7 +18,7 @@ public class MenuScript : MonoBehaviour
     }
 
     public void StartGame(){
-        SceneManager.LoadScene("PlanePreview");
+        SceneManager.LoadScene("ARGameScene");
     }
 
     public void QuitGame(){
